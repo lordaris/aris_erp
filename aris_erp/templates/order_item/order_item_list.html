@@ -1,0 +1,26 @@
+{% for order in orders %}
+<tr id="order-{{ order.pk }}" class="customer-row">
+  <td>{{order.id}}</td>
+  <td>{{ order.customer }}</td>
+
+  <td>
+    {% if order.paid == True %}
+    yes
+    {% else %}
+    no
+    {% endif %}
+  </td>
+  <td>
+    <button
+      class="btn btn-primary btn-rounded btn-fw"
+      hx-get="{% url 'order:edit_order' pk=order.pk %}"
+      hx-target="#dialog"
+    >
+      Edit
+    </button>
+  </td>
+</tr>
+
+{% endfor %}
+
+
