@@ -1,0 +1,105 @@
+{% load widget_tweaks %} {% with WIDGET_ERROR_CLASS='is-invalid' %}
+
+<form
+  hx-post="{{ request.path }}"
+  hx-headers='{"X-CSRFToken":"{{ csrf_token }}"}'
+  class="modal-content"
+>
+  <div class="modal-body">
+    <div class="mb-3">
+      <label for="{{ form.first_name.id_for_label }}" class="form-label"
+        >First Name</label
+      >
+      {% render_field form.first_name class="form-control" placeholder="First Name" %}
+      <div class="invalid-feedback">{{ form.first_name.errors|first }}</div>
+    </div>
+
+    <div class="mb-3">
+      <label for="{{ form.last_name.id_for_label }}" class="form-label"
+        >Last Name</label
+      >
+      {% render_field form.last_name class="form-control" placeholder="Last Name" %}
+      <div class="invalid-feedback">{{ form.last_name.errors|first }}</div>
+    </div>
+
+    <div class="mb-3">
+      <label for="{{ form.phone.id_for_label }}" class="form-label"
+        >Phone</label
+      >
+      {% render_field form.phone class="form-control" %}
+      <div class="invalid-feedback">{{ form.phone.errors|first }}</div>
+    </div>
+
+    <div class="mb-3">
+      <label for="{{ form.email.id_for_label }}" class="form-label"
+        >Email</label
+      >
+      {% render_field form.email class="form-control" %}
+      <div class="invalid-feedback">{{ form.email.errors|first }}</div>
+    </div>
+
+    <div class="mb-3">
+      <label for="{{ form.address_line_1.id_for_label }}" class="form-label"
+        >Address Line 1</label
+      >
+      {% render_field form.address_line_1 class="form-control" %}
+      <div class="invalid-feedback">{{ form.address_line_1.errors|first }}</div>
+    </div>
+
+    <div class="mb-3">
+      <label for="{{ form.address_line_2.id_for_label }}" class="form-label"
+        >Address Line 2</label
+      >
+      {% render_field form.address_line_2 class="form-control" %}
+      <div class="invalid-feedback">{{ form.address_line_2.errors|first }}</div>
+    </div>
+
+    <div class="mb-3">
+      <label for="{{ form.postal_code.id_for_label }}" class="form-label"
+        >Postal Code</label
+      >
+      {% render_field form.postal_code class="form-control" %}
+      <div class="invalid-feedback">{{ form.postal_code.errors|first }}</div>
+    </div>
+
+    <div class="mb-3">
+      <label for="{{ form.city.id_for_label }}" class="form-label">City</label>
+      {% render_field form.city class="form-control" %}
+      <div class="invalid-feedback">{{ form.city.errors|first }}</div>
+    </div>
+
+    <div class="mb-3">
+      <label for="{{ form.state.id_for_label }}" class="form-label"
+        >State</label
+      >
+      {% render_field form.state class="form-control" %}
+      <div class="invalid-feedback">{{ form.state.errors|first }}</div>
+    </div>
+
+    <div class="mb-3">
+      <label for="{{ form.country.id_for_label }}" class="form-label"
+        >Country</label
+      >
+      {% render_field form.country class="form-control" %}
+      <div class="invalid-feedback">{{ form.country.errors|first }}</div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    {% if customer %}
+    <button
+      type="button"
+      class="btn btn-danger"
+      hx-post="{% url 'Customer:remove_customer' pk=customer.pk %}"
+    >
+      Remove
+    </button>
+    <span class="flex-grow-1"></span>
+    {% endif %}
+    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+      Cancel
+    </button>
+    <button type="submit" class="btn btn-primary">Save</button>
+  </div>
+</form>
+
+{% endwith %}

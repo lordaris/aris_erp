@@ -1,0 +1,23 @@
+{% for customer in customers %}
+<tr id="customer-{{ customer.pk }}" class="customer-row">
+  <td>{{ customer.first_name }}</td>
+
+  <td>{{ customer.last_name }}</td>
+
+  <td>{{ customer.email }}</td>
+  <td>{{ customer.phone }}</td>
+  <td>
+    <button
+      class="btn btn-primary btn-rounded btn-fw"
+      hx-get="{% url 'Customer:edit_customer' pk=customer.pk %}"
+      hx-target="#dialog"
+    >
+      Edit
+    </button>
+  </td>
+</tr>
+
+{% endfor %}
+
+
+
