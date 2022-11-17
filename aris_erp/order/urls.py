@@ -13,7 +13,7 @@ app_name = "order"
 urlpatterns = [
     path("", views.order_index_view, name="order_index"),
     path("add/", views.order_add_view, name="add_order"),
-    path("<int:pk>/edit", views.order_edit_view, name="edit_order"),
+    path("edit/<int:pk>", views.order_edit_view, name="edit_order"),
     path("list/", views.order_list_view, name="order_list"),
-    path("<int:pk>/remove", views.order_delete_view, name="remove_order"),
+    path("remove/<int:pk>", views.order_delete_view, name="remove_order"),
 ]

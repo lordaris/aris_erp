@@ -31,7 +31,7 @@ def order_add_view(request):
                 headers={
                     "HX-Trigger": json.dumps(
                         {
-                            "customerListChanged": None,
+                            "orderListChanged": None,
                             "showMessage": f"{order.customer} added.",
                         }
                     )
@@ -59,7 +59,7 @@ def order_edit_view(request, pk):
                 headers={
                     "HX-Trigger": json.dumps(
                         {
-                            "customerListChanged": None,  # It's used to upload the page after submit the edition (or creation).
+                            "orderListChanged": None,  # It's used to upload the page after submit the edition (or creation).
                             "showMessage": f"{orders.customer} updated.",
                         }
                     )
@@ -87,7 +87,7 @@ def order_delete_view(request, pk):
         headers={
             "HX-Trigger": json.dumps(
                 {
-                    "CustomerListChanged": None,
+                    "orderListChanged": None,
                     "showMessage": f"{orders.customer} deleted.",
                 }
             )
